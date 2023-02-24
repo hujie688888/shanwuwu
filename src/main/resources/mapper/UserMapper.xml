@@ -7,4 +7,9 @@
     <select id="findAll" resultType="com.example.shanwuwu.entity.User">
         select * from sys_user;
     </select>
+
+    <select id="findUser" parameterType="java.lang.String" resultType="com.example.shanwuwu.entity.User">
+        select * from sys_user where user_name = #{userName};
+
+    </select>
 </mapper>
