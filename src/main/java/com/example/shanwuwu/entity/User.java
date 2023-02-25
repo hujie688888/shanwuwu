@@ -9,5 +9,13 @@ public class User {
 
     private String userName;
 
-    private int userAge;
+    private  String userAccount;
+
+    private  String userPassword;
+
+    private  int id;
+
+    private  String phoneNumber;
+
+    private  String userEmail;
 }

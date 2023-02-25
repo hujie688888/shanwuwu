@@ -30,12 +30,34 @@ public class UserController {
             return "验证失败，请输入账号";
         }
 
-        List<User> restUser= userMapper.findUser(user.getUserName());
+        List<User> restUser= userMapper.findUser(user.getUserAccount());
         if(restUser.isEmpty()){
             return "验证失败，请输入账号";
         }
         //根据账号查询数据库，验证账号正确性
         return "验证成功";
+    }
+
+    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    public String register( User user) {
+        if (user == null) {
+            return "验证失败";
+        }
+        if(user.getPhoneNumber() == null){
+            return "请输入手机号";
+        }
+        if(user.getUserEmail() == null){
+            return "请输入邮箱";
+        }
+        if(user.getUserPassword() ==  null){
+            return "请输入密码";
+        }
+        User restUser= userMapper.register(user);
+        if(restUser == null){
+            return "注册失败，请重试";
+        }
+        //根据账号查询数据库，验证账号正确性
+        return "注册成功";
     }
 }
 

@@ -26,13 +26,11 @@ public class VerificationAccount implements Verification {
      * @return
      */
     @Override
-    public String verificationAccount(String userName) {
-        if (userName == null) {
+    public String verificationAccount(String userAccount) {
+        if (userAccount == null) {
             return "验证失败，请输入账号";
         }
-        User user = new User();
-        user.setUserName("胡杰");
-        List<User> restUser= userMapper.findUser(user.getUserName());
+        List<User> restUser= userMapper.findUser(userAccount);
         if(restUser == null){
             return "验证失败，请输入账号";
         }

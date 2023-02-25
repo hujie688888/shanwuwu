@@ -5,11 +5,17 @@
 <mapper namespace="com.example.shanwuwu.mapper.UserMapper">
 
     <select id="findAll" resultType="com.example.shanwuwu.entity.User">
-        select * from sys_user;
+        select * from s_user;
     </select>
 
     <select id="findUser" parameterType="java.lang.String" resultType="com.example.shanwuwu.entity.User">
-        select * from sys_user where user_name = #{userName};
+        select * from s_user where user_account = #{userAccount};
 
     </select>
+
+    <insert id="register" parameterType="com.example.shanwuwu.entity.User" useGeneratedKeys="true" keyProperty="id">
+        insert into s_user(id, user_id, user_name,  user_password, user_account, phone_number) values
+        (uuid(), #{userId},#{userName}, #{userPassword}, #{userAccount}, #{phoneNumber})
+    </insert>
+
 </mapper>
