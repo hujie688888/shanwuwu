@@ -13,4 +13,8 @@ public interface UserMapper {
     List<User> findUser(String userAccount);
 
     User register(User user);
+
+    User login(User user);
+
+    int updateUser(User user);
 }

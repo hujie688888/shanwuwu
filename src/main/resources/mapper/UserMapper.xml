@@ -13,9 +13,18 @@
 
     </select>
 
+    <select id="login" parameterType="java.lang.String" resultType="com.example.shanwuwu.entity.User">
+        select * from s_user where phone_number = #{phoneNumber} and user_password = #{userPassword};
+
+    </select>
+
     <insert id="register" parameterType="com.example.shanwuwu.entity.User" useGeneratedKeys="true" keyProperty="id">
         insert into s_user(id, user_id, user_name,  user_password, user_account, phone_number) values
         (uuid(), #{userId},#{userName}, #{userPassword}, #{userAccount}, #{phoneNumber})
     </insert>
+
+    <update id="updateUser" parameterType="com.example.shanwuwu.entity.User">
+        update s_user set user_password = #{userPassword} where id = #{id}
+    </update>
 
 </mapper>

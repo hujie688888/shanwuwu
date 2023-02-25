@@ -59,5 +59,27 @@ public class UserController {
         //根据账号查询数据库，验证账号正确性
         return "注册成功";
     }
+
+    @RequestMapping(value = "/password",method = RequestMethod.POST)
+    public String updateUser( User user) {
+        if (user == null) {
+            return "验证失败";
+        }
+        if(user.getPhoneNumber() == null){
+            return "请输入手机号";
+        }
+        if(user.getUserPassword() ==  null){
+            return "请输入密码";
+        }
+        if(user.getId() !=null){
+
+        }
+        int password= userMapper.updateUser(user);
+        if(password>0){
+            return "修改成功";
+        }
+        //根据账号查询数据库，验证账号正确性
+        return "修改失败";
+    }
 }
 
