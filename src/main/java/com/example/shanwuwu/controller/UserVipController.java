@@ -33,7 +33,7 @@ public class UserVipController {
     }
 
     @RequestMapping(value = "/open",method = RequestMethod.POST)
-    public String openVip( UserVip userVip) {
+    public String openVip(@RequestBody UserVip userVip) {
         if(userVip.getUserId() == null){
             return "请先登录";
         }
@@ -47,7 +47,7 @@ public class UserVipController {
     }
 
     @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public String updateVip( UserVip userVip ) {
+    public String updateVip(@RequestBody UserVip userVip ) {
 
         return "修改失败";
     }

@@ -17,12 +17,12 @@ public class LoginController {
     @Autowired
     private UserMapper userMapper;
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public User login(User user){
+    public User login(@RequestBody User user){
         //密码先加密，然后跟数据库的比较
        user.setUserPassword(MD5Utils.inputPassToFormPass(user.getUserPassword()));
        User loing = userMapper.login(user);
-       loing.setUserPassword("开外挂");
        if(loing !=null){
+           loing.setUserPassword("开外挂");
            return loing;
        }
         return new User();

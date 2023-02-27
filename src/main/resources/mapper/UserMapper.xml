@@ -19,8 +19,8 @@
     </select>
 
     <insert id="register" parameterType="com.example.shanwuwu.entity.User" useGeneratedKeys="true" keyProperty="id">
-        insert into s_user(id,  user_name,  user_password, phone_number,vip_flag) values
-        (uuid(),#{userName}, #{userPassword}, #{phoneNumber},#{vipFlag})
+        insert into s_user(id,  user_name,  user_password, phone_number,vip_flag,user_email) values
+        (uuid(),#{userName}, #{userPassword}, #{phoneNumber},#{vipFlag},#{userEmail})
     </insert>
 
     <update id="updateUser" parameterType="com.example.shanwuwu.entity.User">

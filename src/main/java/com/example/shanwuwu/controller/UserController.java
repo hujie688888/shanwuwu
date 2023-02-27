@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/check",method = RequestMethod.POST)
-    public String verificationAccount( User user) {
+    public String verificationAccount(@RequestBody User user) {
         if (user == null) {
             return "验证失败，请输入账号";
         }
@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public String register( User user) {
+    public String register(@RequestBody User user) {
         if (user == null) {
             return "验证失败";
         }
@@ -65,7 +65,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/password",method = RequestMethod.POST)
-    public String updateUser( User user) {
+    public String updateUser(@RequestBody User user) {
         if (user == null) {
             return "验证失败";
         }
