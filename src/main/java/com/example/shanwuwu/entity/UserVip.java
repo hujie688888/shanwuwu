@@ -21,4 +21,5 @@ public class UserVip {
 
     private  String configId;
 
+    private Date openDate;
 }

@@ -22,7 +22,7 @@ public class UserVipController {
     @Autowired
     UserVipService userVipService;
 
-    @RequestMapping(value = "/queryVip",method = RequestMethod.POST)
+    @RequestMapping(value = "/query",method = RequestMethod.POST)
     public UserVip queryVip(String userId){
         UserVip userVip = new UserVip();
         if (userId == null) {
@@ -32,15 +32,21 @@ public class UserVipController {
         return userVip;
     }
 
-    @RequestMapping(value = "/openVip",method = RequestMethod.POST)
+    @RequestMapping(value = "/open",method = RequestMethod.POST)
     public String openVip( UserVip userVip) {
-        if (userVip == null) {
+        if(userVip.getUserId() == null){
+            return "请先登录";
+        }
+        if(userVip.getSetMeal()<0){
+            return "请选择套餐类型";
+        }
+        if (userVip != null) {
             userVipService.openVip(userVip);
         }
         return "开通成功";
     }
 
-    @RequestMapping(value = "/updateVip",method = RequestMethod.POST)
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
     public String updateVip( UserVip userVip ) {
 
         return "修改失败";

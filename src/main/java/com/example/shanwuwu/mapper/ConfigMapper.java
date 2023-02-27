@@ -10,4 +10,6 @@ import java.util.List;
 public interface ConfigMapper {
     List<BaseConfig> queryConfig();
 
+    BaseConfig queryId(String id);
+
 }

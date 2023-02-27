@@ -8,5 +8,8 @@
         select * from s_config ;
 
     </select>
+    <select id="queryId" parameterType="java.lang.String" resultType="com.example.shanwuwu.entity.BaseConfig">
+        select * from s_config where id = #{id};
 
+    </select>
 </mapper>

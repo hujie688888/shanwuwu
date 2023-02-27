@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 @Configurable
@@ -25,7 +26,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/check",method = RequestMethod.POST)
-    public String verificationAccount(@RequestBody User user) {
+    public String verificationAccount( User user) {
         if (user == null) {
             return "验证失败，请输入账号";
         }

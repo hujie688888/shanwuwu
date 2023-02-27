@@ -9,7 +9,7 @@
     </select>
 
     <select id="findUser" parameterType="java.lang.String" resultType="com.example.shanwuwu.entity.User">
-        select * from s_user where phoneNumber = #{phoneNumber};
+        select * from s_user where phone_number = #{phoneNumber};
 
     </select>
 
@@ -19,8 +19,8 @@
     </select>
 
     <insert id="register" parameterType="com.example.shanwuwu.entity.User" useGeneratedKeys="true" keyProperty="id">
-        insert into s_user(id, user_id, user_name,  user_password, user_account, phone_number) values
-        (uuid(), #{userId},#{userName}, #{userPassword}, #{userAccount}, #{phoneNumber})
+        insert into s_user(id,  user_name,  user_password, phone_number,vip_flag) values
+        (uuid(),#{userName}, #{userPassword}, #{phoneNumber},#{vipFlag})
     </insert>
 
     <update id="updateUser" parameterType="com.example.shanwuwu.entity.User">

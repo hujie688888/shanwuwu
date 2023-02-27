@@ -6,7 +6,7 @@ public interface UserVipService {
 
     UserVip queryVip(String userId);
 
-    int openVip(UserVip userVip);
+    String openVip(UserVip userVip);
 
-    int updateVip(UserVip userVip);
+    String updateVip(UserVip userVip);
 }
