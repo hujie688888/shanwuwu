@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.shanwuwu.mapper.UserVipMapper">
+
+    <select id="queryVip" parameterType="java.lang.String" resultType="com.example.shanwuwu.entity.UserVip">
+        select * from s_user_vip where user_id = #{userId} ;
+
+    </select>
+
+    <insert id="openVip" parameterType="com.example.shanwuwu.entity.UserVip" useGeneratedKeys="true" keyProperty="id">
+        insert into s_user_vip(id, user_id, set_meal,  preferential_price, expires_date, original_price) values
+        (uuid(), #{userId},#{setMeal}, #{preferentialPrice}, #{expiresDate}, #{originalPrice})
+    </insert>
+
+    <update id="updateVip" parameterType="com.example.shanwuwu.entity.UserVip">
+        update s_user_vip set expires_date = #{expiresDate} where id = #{userId}
+    </update>
+
+</mapper>

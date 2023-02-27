@@ -9,7 +9,7 @@
     </select>
 
     <select id="findUser" parameterType="java.lang.String" resultType="com.example.shanwuwu.entity.User">
-        select * from s_user where user_account = #{userAccount};
+        select * from s_user where phoneNumber = #{phoneNumber};
 
     </select>
 
@@ -24,7 +24,14 @@
     </insert>
 
     <update id="updateUser" parameterType="com.example.shanwuwu.entity.User">
-        update s_user set user_password = #{userPassword} where id = #{id}
+        update s_user
+        <if test="userPassword!=null and userPassword!=''">
+            set user_password = #{userPassword}
+        </if>
+        <if test="vipFlag!=null and vipFlag!=''">
+            set vip_flag = #{vipFlag}
+        </if>
+        where id = #{id}
     </update>
 
 </mapper>

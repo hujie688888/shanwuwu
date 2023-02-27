@@ -1,4 +1,4 @@
-package com.example.shanwuwu.service.serviceimp;
+package com.example.shanwuwu.service.serviceImpl;
 
 import com.example.shanwuwu.entity.User;
 import com.example.shanwuwu.mapper.UserMapper;

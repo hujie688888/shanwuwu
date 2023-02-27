@@ -2,11 +2,11 @@ package com.example.shanwuwu.controller;
 
 import com.example.shanwuwu.entity.User;
 import com.example.shanwuwu.mapper.UserMapper;
-import org.apache.ibatis.reflection.ArrayUtil;
+import com.example.shanwuwu.utils.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.web.bind.annotation.*;
-import org.thymeleaf.util.ListUtils;
+
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class UserController {
             return "验证失败，请输入账号";
         }
 
-        List<User> restUser= userMapper.findUser(user.getUserAccount());
+        List<User> restUser= userMapper.findUser(user.getPhoneNumber());
         if(restUser.isEmpty()){
             return "验证失败，请输入账号";
         }
@@ -52,8 +52,11 @@ public class UserController {
         if(user.getUserPassword() ==  null){
             return "请输入密码";
         }
-        User restUser= userMapper.register(user);
-        if(restUser == null){
+        //String passwrod = MD5Utils.inputPassToFormPass(user.getUserPassword());
+        //user.setUserPassword(passwrod);
+        user.setUserPassword(MD5Utils.inputPassToFormPass(user.getUserPassword()));
+        int restUser= userMapper.register(user);
+        if(restUser <0){
             return "注册失败，请重试";
         }
         //根据账号查询数据库，验证账号正确性

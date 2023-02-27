@@ -5,11 +5,7 @@ import lombok.Data;
 @Data
 public class User {
 
-    private int userId;
-
     private String userName;
-
-    private  String userAccount;
 
     private  String userPassword;
 
@@ -18,4 +14,6 @@ public class User {
     private  String phoneNumber;
 
     private  String userEmail;
+
+    private  String vipFlag;
 }

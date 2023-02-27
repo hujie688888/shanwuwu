@@ -1,20 +1,18 @@
 package com.example.shanwuwu.mapper;
 
 import com.example.shanwuwu.entity.User;
+import com.example.shanwuwu.entity.UserVip;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public interface UserMapper {
-    List<User> findAll();
+public interface UserVipMapper {
 
-    List<User> findUser(String userAccount);
+    UserVip queryVip(String userId);
 
-    int register(User user);
+    int openVip(UserVip userVip);
 
-    User login(User user);
-
-    int updateUser(User user);
+    int updateVip(UserVip userVip);
 }
