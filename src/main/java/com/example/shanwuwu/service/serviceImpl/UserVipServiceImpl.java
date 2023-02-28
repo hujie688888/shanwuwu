@@ -3,6 +3,7 @@ package com.example.shanwuwu.service.serviceImpl;
 import com.example.shanwuwu.entity.BaseConfig;
 import com.example.shanwuwu.entity.User;
 import com.example.shanwuwu.entity.UserVip;
+import com.example.shanwuwu.mapper.ApiKeyMapper;
 import com.example.shanwuwu.mapper.ConfigMapper;
 import com.example.shanwuwu.mapper.UserMapper;
 import com.example.shanwuwu.mapper.UserVipMapper;
@@ -33,6 +34,9 @@ public class UserVipServiceImpl implements UserVipService {
 
     @Autowired
     ConfigMapper configMapper;
+
+    @Autowired
+    ApiKeyMapper apiKeyMapper;
     /**
      * @param userId
      * @return
@@ -92,4 +96,14 @@ public class UserVipServiceImpl implements UserVipService {
     public String updateVip(UserVip userVip) {
         return "";
     }
+
+    /**
+     * @return
+     */
+    @Override
+    public String queryApiKey() {
+        return apiKeyMapper.queryApiKey();
+    }
+
+
 }

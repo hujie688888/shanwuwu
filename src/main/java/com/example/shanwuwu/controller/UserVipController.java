@@ -4,6 +4,7 @@ import com.example.shanwuwu.entity.User;
 import com.example.shanwuwu.entity.UserVip;
 import com.example.shanwuwu.mapper.UserMapper;
 import com.example.shanwuwu.service.UserVipService;
+import com.example.shanwuwu.utils.CommonResult;
 import com.example.shanwuwu.utils.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -23,9 +24,9 @@ public class UserVipController {
     UserVipService userVipService;
 
     @RequestMapping(value = "/query",method = RequestMethod.POST)
-    public UserVip queryVip(String userId){
+    public UserVip queryVip(@RequestParam(value="userId",required=true) String userId){
         UserVip userVip = new UserVip();
-        if (userId == null) {
+        if (userId != null) {
             userVip = userVipService.queryVip(userId);
         }
 
@@ -47,9 +48,15 @@ public class UserVipController {
     }
 
     @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public String updateVip(@RequestBody UserVip userVip ) {
+    public CommonResult updateVip(@RequestBody UserVip userVip ) {
 
-        return "修改失败";
+        return CommonResult.success("");
     }
+
+    @RequestMapping(value = "/shanwuwu",method = RequestMethod.POST)
+    public CommonResult queryKey() {
+        return CommonResult.success(200,userVipService.queryApiKey());
+    }
+
 }
 

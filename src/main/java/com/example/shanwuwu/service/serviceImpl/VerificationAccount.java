@@ -22,7 +22,7 @@ public class VerificationAccount implements Verification {
     private UserMapper userMapper;
 
     /**
-     * @param user
+     * @param
      * @return
      */
     @Override
@@ -30,7 +30,7 @@ public class VerificationAccount implements Verification {
         if (userAccount == null) {
             return "验证失败，请输入账号";
         }
-        List<User> restUser= userMapper.findUser(userAccount);
+       User restUser= userMapper.findUser(userAccount);
         if(restUser == null){
             return "验证失败，请输入账号";
         }

@@ -2,6 +2,7 @@ package com.example.shanwuwu.controller;
 
 import com.example.shanwuwu.entity.User;
 import com.example.shanwuwu.mapper.UserMapper;
+import com.example.shanwuwu.utils.CommonResult;
 import com.example.shanwuwu.utils.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -25,14 +26,23 @@ public class UserController {
         return list;
     }
 
+    @RequestMapping(value = "/phone",method = RequestMethod.POST)
+    public CommonResult queryPhone(@RequestParam(value="phoneNumber",required=true) String phoneNumber){
+        User user = userMapper.findUser(phoneNumber);
+        if(user != null){
+           return CommonResult.success(user,200,"scceuss");
+        }
+        return CommonResult.validateFailed("查询失败");
+    }
+
     @RequestMapping(value = "/check",method = RequestMethod.POST)
     public String verificationAccount(@RequestBody User user) {
         if (user == null) {
             return "验证失败，请输入账号";
         }
 
-        List<User> restUser= userMapper.findUser(user.getPhoneNumber());
-        if(restUser.isEmpty()){
+        User restUser= userMapper.findUser(user.getPhoneNumber());
+        if(restUser == null){
             return "验证失败，请输入账号";
         }
         //根据账号查询数据库，验证账号正确性
@@ -78,6 +88,7 @@ public class UserController {
         if(user.getId() !=null){
 
         }
+        user.setUserPassword(MD5Utils.inputPassToFormPass(user.getUserPassword()));
         int password= userMapper.updateUser(user);
         if(password>0){
             return "修改成功";

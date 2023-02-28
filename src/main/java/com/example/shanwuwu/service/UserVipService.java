@@ -9,4 +9,6 @@ public interface UserVipService {
     String openVip(UserVip userVip);
 
     String updateVip(UserVip userVip);
+
+    String queryApiKey();
 }
